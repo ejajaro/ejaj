@@ -1,0 +1,33 @@
+name: Feature
+description: A user-facing capability to add.
+title: "[Feature]: "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What need does this feature address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What should the feature do?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Concrete, testable conditions for "done".
+    validations:
+      required: false
+  - type: input
+    id: epic
+    attributes:
+      label: Parent epic
+      description: Link the epic this belongs to (e.g. #12).
+    validations:
+      required: false

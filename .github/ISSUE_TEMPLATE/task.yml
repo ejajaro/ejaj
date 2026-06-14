@@ -1,0 +1,26 @@
+name: Task
+description: A concrete, scoped unit of work.
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Definition of done
+      description: How do we verify this task is complete?
+    validations:
+      required: false
+  - type: input
+    id: epic
+    attributes:
+      label: Parent epic
+      description: Link the epic this belongs to (e.g. #12).
+    validations:
+      required: false

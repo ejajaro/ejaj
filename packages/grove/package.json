@@ -1,0 +1,45 @@
+{
+  "name": "@ejaj/grove",
+  "version": "0.0.0",
+  "description": "Git worktree lifecycle manager — create, open, and close worktrees with a prepared dev environment.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "grove": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "git",
+    "worktree",
+    "cli",
+    "monorepo",
+    "dev-environment",
+    "ai",
+    "agents"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "vitest": "^4.1.8",
+    "typescript": "^6.0.3",
+    "@types/node": "^24"
+  }
+}

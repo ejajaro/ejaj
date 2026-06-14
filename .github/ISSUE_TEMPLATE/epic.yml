@@ -1,0 +1,40 @@
+name: Epic
+description: A large body of work spanning multiple features/tasks.
+title: "[Epic]: "
+labels: ["epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        After creating, set **Type = Epic** and add this issue to the Project.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is this epic about and why does it matter?
+    validations:
+      required: true
+  - type: textarea
+    id: goals
+    attributes:
+      label: Goals / non-goals
+      description: What is in scope, and explicitly what is not.
+    validations:
+      required: false
+  - type: textarea
+    id: breakdown
+    attributes:
+      label: Work breakdown
+      description: List the child tasks/features. Link them as sub-issues once created.
+      placeholder: |
+        - [ ] #
+        - [ ] #
+    validations:
+      required: false
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How do we know the epic is done?
+    validations:
+      required: false
