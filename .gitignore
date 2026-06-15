@@ -6,3 +6,9 @@ coverage/
 .env
 .env.*
 !.env.example
+
+# Claude Code — keep local/secret settings out of git (shared skills/settings stay tracked)
+.claude/settings.local.json
+
+# Local ai-docs for AI assistant development
+ai-docs/
