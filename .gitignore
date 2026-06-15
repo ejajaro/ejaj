@@ -6,3 +6,10 @@ coverage/
 .env
 .env.*
 !.env.example
+
+# Claude Code — keep local/secret settings out of git
+.claude/settings.local.json
+
+# AI scratch is local; commit only the shared agent config under ai-docs/agents/
+ai-docs/*
+!ai-docs/agents/
