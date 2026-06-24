@@ -17,6 +17,19 @@ Check with the user that these seams match their expectations.
 
 3. Write the PRD using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
 
+### Where the PRD file lives (this repo) — hidden by default, visible on request
+
+When you also save the PRD as a local markdown file, location is governed by visibility:
+
+- **Default (hidden):** write it to `ai-docs/<pkg>/prd.md` (e.g. `ai-docs/grove/prd.md`). `ai-docs/`
+  is gitignored, so the doc stays local and never enters the repo. This is the default for EVERY PRD
+  unless the user explicitly says otherwise.
+- **On explicit request (visible):** only when the user asks to make it "visible" / "commit it" /
+  "put it in `docs/`" / names a tracked path, write (or `git mv`) it to `docs/<pkg>/prd.md` so it's
+  tracked, and tell the user it's now committed-tracked.
+
+Never place a PRD in `docs/` without an explicit ask. See CLAUDE.md → "Where AI-generated docs go".
+
 <prd-template>
 
 ## Problem Statement

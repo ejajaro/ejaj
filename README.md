@@ -127,6 +127,61 @@ flowchart TD
 
 ---
 
+## Running the AFK agent loop (Ralph)
+
+Once issues are labelled **`ready-for-agent`** (the output of `to-issues` → `triage`), the `ralph/`
+loop implements them unattended — one issue per iteration, test-first, committing as it goes. It runs
+Claude Code directly on your machine using your existing subscription (no Docker, no API key). Full
+details in [`ralph/README.md`](ralph/README.md).
+
+### Step by step
+
+1. **Get on a feature branch** — Ralph refuses to run on `main`:
+
+   ```bash
+   git switch -c afk/ralph
+   ```
+
+2. **Check the queue** — confirm there are issues to work on:
+
+   ```bash
+   gh issue list --label ready-for-agent --state open
+   ```
+
+3. **Watch one supervised pass** with `once.sh` — runs Claude interactively so you can see it pick an
+   issue, implement it with `/tdd`, run `pnpm test` / `typecheck` / `lint`, commit, and relabel the
+   issue `ready-for-human`. Approve any prompt it asks:
+
+   ```bash
+   bash ralph/once.sh
+   ```
+
+4. **Review that first commit** — make sure the change and commit message look right:
+
+   ```bash
+   git log -1 --stat
+   ```
+
+5. **Go AFK** with `afk.sh` — loops headless for up to N iterations (default 10), stopping early when
+   no `ready-for-agent` issues remain. Start small (3–5) before an overnight run:
+
+   ```bash
+   bash ralph/afk.sh 5
+   ```
+
+6. **Review the results** — each finished issue is now labelled `ready-for-human` and left open.
+   Inspect the branch, then push / open a PR yourself:
+
+   ```bash
+   git log --oneline main..HEAD
+   gh issue list --label ready-for-human --state open
+   ```
+
+> **Safety:** `git push` and `gh pr create` still prompt for confirmation — Ralph only commits locally
+> and relabels issues. Nothing is pushed, merged, or closed without you.
+
+---
+
 ## Repo config the skills read
 
 | File | Purpose |
